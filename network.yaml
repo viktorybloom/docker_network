@@ -1,0 +1,18 @@
+version: "3.7"
+
+services: # busybox to launch network service
+  network_base:
+    image: busybox
+    command: sleep 3600
+    networks:
+      ipvlan_network:
+
+networks:
+  ipvlan_network:
+    driver: ipvlan
+    driver_opts:
+      parent: eth0
+      ipvlan_mode: l3
+    ipam:
+      config:
+        - subnet: 10.9.8.0/24

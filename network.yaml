@@ -5,10 +5,10 @@ services: # busybox to launch network service
     image: busybox
     command: sleep 3600
     networks:
-      ipvlan_network:
+      ipvlan_base:
 
 networks:
-  ipvlan_network:
+  ipvlan_base:
     driver: ipvlan
     driver_opts:
       parent: eth0
